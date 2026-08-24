@@ -1,0 +1,6 @@
+{
+  "name": "dystiny-question-preflight",
+  "private": true,
+  "type": "module",
+  "scripts": { "check": "node --test && node tests/check-files.mjs" }
+}

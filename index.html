@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Question Preflight | Dystiny</title>
+  <meta name="description" content="Shape a broad idea into a focused question, then open it as a calm, visual evidence path in Dystiny.">
+  <link rel="canonical" href="https://evolved-designs.github.io/dystiny-question-preflight/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dystiny Question Preflight">
+  <meta property="og:description" content="A browser-private way to prepare a stronger question before opening Dystiny.">
+  <meta property="og:url" content="https://evolved-designs.github.io/dystiny-question-preflight/">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="sky">
+    <nav class="nav shell" aria-label="Primary">
+      <a class="brand" href="https://dystiny.com/?utm_source=github_pages&amp;utm_medium=owned_tool&amp;utm_campaign=question_preflight">Dystiny</a>
+      <span class="privacy">Private until you choose to explore</span>
+    </nav>
+    <div class="hero shell">
+      <p class="eyebrow">Question preflight</p>
+      <h1>Give your curiosity a clearer starting point.</h1>
+      <p class="lede">Dystiny works best when a question leaves room for evidence, relationships, and tradeoffs. Draft yours here, see what might sharpen it, then choose when to open the path.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="workspace shell" aria-label="Question preparation workspace">
+      <div class="card composer">
+        <div class="field-row"><label for="question"><strong>What do you want to understand?</strong></label><span class="counter" data-count>0/320</span></div>
+        <textarea id="question" maxlength="320" placeholder="How does… What changes when… Which approach…" aria-describedby="privacy-detail"></textarea>
+        <p class="microcopy" id="privacy-detail">This page does not save, send, or analyze your draft anywhere else. It uses simple checks in your browser.</p>
+        <div class="actions">
+          <button class="button secondary" type="button" data-sample>Try an example</button>
+          <button class="button secondary" type="button" data-clear>Clear</button>
+          <a class="button disabled" data-launch aria-disabled="true" href="#question">Explore this question in Dystiny</a>
+        </div>
+      </div>
+
+      <aside class="card coach" aria-live="polite">
+        <h2>Path signal</h2>
+        <p class="status" data-status>Start with the thing you want to understand.</p>
+        <ul class="signals" data-prompts></ul>
+        <p class="boundary">For current or high-stakes topics, open the cited sources and follow qualified or emergency guidance where appropriate. Dystiny is an exploration aid, not professional advice.</p>
+      </aside>
+    </section>
+
+    <section class="why shell">
+      <h2>What happens next</h2>
+      <p>When you choose <em>Explore this question</em>, your draft becomes the starting point for a visual answer path on Dystiny. You can open evidence, follow related topics, and keep exploring without turning the experience into a generic chat thread.</p>
+    </section>
+  </main>
+
+  <footer><div class="shell">A calm, transparent way to explore what connects.</div></footer>
+</body>
+</html>
