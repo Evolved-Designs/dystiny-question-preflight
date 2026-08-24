@@ -3,9 +3,13 @@ import { readFile } from 'node:fs/promises';
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 assert.equal((html.match(/<link rel="canonical"/g) ?? []).length, 1);
+assert.match(html, /<title>AI Research Question Preflight \| Dystiny<\/title>/);
+assert.match(html, /<h1>Shape a broad idea into a stronger research question\.<\/h1>/);
 assert.match(html, /does not save, send, or analyze/);
 assert.match(html, /coarse 0–4 readiness signal/);
 assert.match(html, /data-launch/);
+assert.equal((html.match(/class="example-link"/g) ?? []).length, 3);
+assert.match(html, /utm_content=example_city_heat/);
 assert.doesNotMatch(html, /Clarity/i);
 
 const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
