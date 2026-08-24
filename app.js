@@ -28,12 +28,14 @@ export function analyzeQuestion(rawQuestion) {
   return { question, words, checks, ready, total: checks.length };
 }
 
-export function buildDystinyUrl(question) {
+export function buildDystinyUrl(question, ready = analyzeQuestion(question).ready) {
   const url = new URL('https://dystiny.com/answer/');
   url.searchParams.set('q', String(question).trim());
   url.searchParams.set('utm_source', 'github_pages');
   url.searchParams.set('utm_medium', 'owned_tool');
   url.searchParams.set('utm_campaign', 'question_preflight');
+  const safeReady = Math.max(0, Math.min(4, Number(ready) || 0));
+  url.searchParams.set('utm_content', `signals_${safeReady}_of_4`);
   return url.toString();
 }
 
@@ -66,7 +68,7 @@ function init() {
     const canLaunch = result.question.length >= 12;
     launch.toggleAttribute('aria-disabled', !canLaunch);
     launch.classList.toggle('disabled', !canLaunch);
-    launch.href = canLaunch ? buildDystinyUrl(result.question) : '#question';
+    launch.href = canLaunch ? buildDystinyUrl(result.question, result.ready) : '#question';
   }
 
   field.addEventListener('input', render);

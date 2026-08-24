@@ -12,4 +12,11 @@ test('keeps the destination on the verified Dystiny answer route', () => {
   assert.equal(url.origin, 'https://dystiny.com');
   assert.equal(url.pathname, '/answer/');
   assert.equal(url.searchParams.get('utm_campaign'), 'question_preflight');
+  assert.equal(url.searchParams.get('utm_content'), 'signals_3_of_4');
+});
+
+test('caps the readiness tier without changing the question', () => {
+  const url = new URL(buildDystinyUrl('What changes when a city plants more trees?', 99));
+  assert.equal(url.searchParams.get('q'), 'What changes when a city plants more trees?');
+  assert.equal(url.searchParams.get('utm_content'), 'signals_4_of_4');
 });
