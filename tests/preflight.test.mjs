@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { analyzeQuestion, buildDystinyUrl } from '../app.js';
+import { analyzeQuestion, buildDystinyUrl, launchCopy } from '../app.js';
 
 test('recognizes an exploratory tradeoff question', () => {
   const result = analyzeQuestion('How can cities reduce dangerous summer heat while protecting residents who face the greatest risk?');
@@ -19,4 +19,10 @@ test('caps the readiness tier without changing the question', () => {
   const url = new URL(buildDystinyUrl('What changes when a city plants more trees?', 99));
   assert.equal(url.searchParams.get('q'), 'What changes when a city plants more trees?');
   assert.equal(url.searchParams.get('utm_content'), 'signals_4_of_4');
+});
+
+test('makes the handoff match the question readiness', () => {
+  assert.equal(launchCopy(0), 'Open this starting question in Dystiny');
+  assert.equal(launchCopy(2), 'Explore this focused question');
+  assert.equal(launchCopy(4), 'Open this visual evidence path');
 });

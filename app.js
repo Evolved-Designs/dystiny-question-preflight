@@ -39,6 +39,13 @@ export function buildDystinyUrl(question, ready = analyzeQuestion(question).read
   return url.toString();
 }
 
+export function launchCopy(ready = 0) {
+  const safeReady = Math.max(0, Math.min(4, Number(ready) || 0));
+  if (safeReady === 4) return 'Open this visual evidence path';
+  if (safeReady >= 2) return 'Explore this focused question';
+  return 'Open this starting question in Dystiny';
+}
+
 function init() {
   const field = document.querySelector('#question');
   if (!field) return;
@@ -68,6 +75,8 @@ function init() {
     const canLaunch = result.question.length >= 12;
     launch.toggleAttribute('aria-disabled', !canLaunch);
     launch.classList.toggle('disabled', !canLaunch);
+    launch.tabIndex = canLaunch ? 0 : -1;
+    launch.textContent = canLaunch ? launchCopy(result.ready) : 'Write a question to continue';
     launch.href = canLaunch ? buildDystinyUrl(result.question, result.ready) : '#question';
   }
 
