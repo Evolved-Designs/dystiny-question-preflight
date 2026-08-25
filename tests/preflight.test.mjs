@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { analyzeQuestion, buildDystinyUrl, launchCopy } from '../app.js';
+import { analyzeQuestion, buildDystinyUrl, evidenceNote, launchCopy, questionForEvidence } from '../app.js';
 
 test('recognizes an exploratory tradeoff question', () => {
   const result = analyzeQuestion('How can cities reduce dangerous summer heat while protecting residents who face the greatest risk?');
@@ -26,6 +26,15 @@ test('carries only a whitelisted evidence choice into attribution', () => {
   const unsafe = new URL(buildDystinyUrl('What does current evidence say about adult sleep?', 4, 'private-note'));
   assert.equal(health.searchParams.get('utm_content'), 'signals_4_of_4_evidence_health');
   assert.equal(unsafe.searchParams.get('utm_content'), 'signals_4_of_4_evidence_balanced');
+  assert.match(health.searchParams.get('q'), /provider and purpose/);
+  assert.doesNotMatch(unsafe.searchParams.get('q'), /private-note/);
+});
+
+test('makes an evidence lens visible in the destination question', () => {
+  assert.equal(questionForEvidence('What changed?', 'balanced'), 'What changed?');
+  assert.match(questionForEvidence('What changed?', 'official'), /official records/);
+  assert.match(questionForEvidence('What changed?', 'primary'), /methods, sample, dates, limitations/);
+  assert.match(evidenceNote('health'), /boundary from individual medical advice/);
 });
 
 test('makes the handoff match the question readiness', () => {

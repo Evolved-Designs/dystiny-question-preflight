@@ -54,6 +54,7 @@ textarea { width: 100%; min-height: 11rem; margin-top: .5rem; padding: 1rem; res
 .evidence-choice span { display: grid; gap: .2rem; }
 .evidence-choice small { color: var(--muted); line-height: 1.45; }
 .evidence-choice label:has(input:checked) { border-color: var(--violet-dark); background: #f2effb; }
+.evidence-note { margin: 14px 0 0; padding: 12px 14px; border-left: 4px solid var(--gold); background: #fff8dc; color: var(--ink); }
 .microcopy { color: var(--muted); font-size: .9rem; }
 .actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
 .button { min-height: 2.85rem; padding: .7rem 1rem; border: 1px solid var(--night); border-radius: .65rem; background: var(--night); color: #fff; font-weight: 760; text-decoration: none; cursor: pointer; }

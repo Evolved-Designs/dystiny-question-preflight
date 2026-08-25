@@ -30,14 +30,34 @@ export function analyzeQuestion(rawQuestion) {
 
 export function buildDystinyUrl(question, ready = analyzeQuestion(question).ready, evidence = 'balanced') {
   const url = new URL('https://dystiny.com/answer/');
-  url.searchParams.set('q', String(question).trim());
+  const safeEvidence = ['balanced', 'official', 'primary', 'health'].includes(evidence) ? evidence : 'balanced';
+  url.searchParams.set('q', questionForEvidence(question, safeEvidence));
   url.searchParams.set('utm_source', 'github_pages');
   url.searchParams.set('utm_medium', 'owned_tool');
   url.searchParams.set('utm_campaign', 'question_preflight');
   const safeReady = Math.max(0, Math.min(4, Number(ready) || 0));
-  const safeEvidence = ['balanced', 'official', 'primary', 'health'].includes(evidence) ? evidence : 'balanced';
   url.searchParams.set('utm_content', `signals_${safeReady}_of_4_evidence_${safeEvidence}`);
   return url.toString();
+}
+
+export function questionForEvidence(question, evidence = 'balanced') {
+  const clean = String(question).trim();
+  const lenses = {
+    official: 'Prioritize current official records and distinguish the record from interpretation.',
+    primary: 'Prioritize original research; identify methods, sample, dates, limitations, and later replication or review.',
+    health: 'Evaluate provider and purpose, expert review, supporting research, update date, and privacy. Separate population evidence from individual medical advice.'
+  };
+  return lenses[evidence] ? `${clean} ${lenses[evidence]}` : clean;
+}
+
+export function evidenceNote(evidence = 'balanced') {
+  const notes = {
+    balanced: 'Your wording will open unchanged. Dystiny can choose a best-fit source mix.',
+    official: 'Opening adds a visible request for current official records and a fact-versus-interpretation boundary.',
+    primary: 'Opening adds a visible request for methods, sample, dates, limitations, and later replication or review.',
+    health: 'Opening adds a visible source check for provider, purpose, expert review, research, update date, and privacy—plus a boundary from individual medical advice.'
+  };
+  return notes[evidence] ?? notes.balanced;
 }
 
 export function launchCopy(ready = 0) {
@@ -59,6 +79,7 @@ function init() {
   const clear = document.querySelector('[data-clear]');
   const evidenceChoices = [...document.querySelectorAll('input[name="evidence"]')];
   const evidence = () => evidenceChoices.find((choice) => choice.checked)?.value ?? 'balanced';
+  const evidenceDetail = document.querySelector('[data-evidence-note]');
 
   function render() {
     const result = analyzeQuestion(field.value);
@@ -66,6 +87,7 @@ function init() {
     status.textContent = result.question
       ? `${result.ready}/${result.total} question signals ready`
       : 'Start with the thing you want to understand.';
+    evidenceDetail.textContent = evidenceNote(evidence());
     prompts.innerHTML = '';
 
     result.checks.forEach((check) => {

@@ -57,7 +57,8 @@
           <label><input type="radio" name="evidence" value="primary"><span><strong>Original research</strong><small>Prioritize methods, samples, dates, limitations, and later replication or review.</small></span></label>
           <label><input type="radio" name="evidence" value="health"><span><strong>Health evidence</strong><small>Prioritize qualified review, supporting research, update dates, and a clear boundary from individual medical advice.</small></span></label>
         </fieldset>
-        <p class="microcopy" id="privacy-detail">This page does not save, send, or analyze your draft anywhere else. It uses simple checks in your browser. If you choose to explore, Dystiny receives the question, a coarse 0–4 readiness signal, and the evidence choice with the destination link.</p>
+        <p class="evidence-note" data-evidence-note aria-live="polite">Your wording will open unchanged. Dystiny can choose a best-fit source mix.</p>
+        <p class="microcopy" id="privacy-detail">This page does not save, send, or analyze your draft anywhere else. It uses simple checks in your browser. If you choose official, original-research, or health evidence, the destination question visibly includes that source-check request. The link also carries only a coarse 0–4 readiness signal and the evidence label.</p>
         <div class="actions">
           <button class="button secondary" type="button" data-sample>Try an example</button>
           <button class="button secondary" type="button" data-clear>Clear</button>
@@ -83,7 +84,7 @@
         <a class="example-link" href="https://dystiny.com/answer/?q=Which%20trade-offs%20matter%20when%20a%20small%20team%20chooses%20open-source%20software%3F&amp;utm_source=github_pages&amp;utm_medium=owned_tool&amp;utm_campaign=question_preflight&amp;utm_content=example_open_source"><strong>Compare tradeoffs</strong><span>Which tradeoffs matter when a small team chooses open-source software?</span></a>
         <a class="example-link" href="https://dystiny.com/answer/?q=What%20does%20current%20evidence%20say%20about%20sleep%20duration%20and%20adult%20health%3F%20Separate%20population%20research%20from%20individual%20medical%20advice.&amp;utm_source=github_pages&amp;utm_medium=owned_tool&amp;utm_campaign=question_preflight&amp;utm_content=example_health_evidence"><strong>Check a health claim</strong><span>What does current evidence say about sleep duration and adult health?</span></a>
       </div>
-      <p class="source-note">For health questions, review who created or reviewed the information, the supporting evidence, and when it was updated. <a href="https://ods.od.nih.gov/HealthInformation/How_To_Evaluate_Health_Information_on_the_Internet_Questions_and_Answers/">NIH guidance explains these checks</a>.</p>
+      <p class="source-note">For health questions, review who created or reviewed the information, its purpose and funding, the supporting evidence, when it was updated, and how personal information is used. <a href="https://medlineplus.gov/evaluatinghealthinformation.html">NIH MedlinePlus explains these checks</a>.</p>
     </section>
 
     <section class="why shell">
