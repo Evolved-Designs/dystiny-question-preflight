@@ -39,6 +39,8 @@ button, textarea { font: inherit; }
 .eyebrow { margin: 0 0 .7rem; color: var(--mint); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 h1 { max-width: 14ch; margin: 0; font-family: Georgia, serif; font-size: clamp(2.7rem, 8vw, 6rem); line-height: .98; letter-spacing: -.04em; }
 .lede { max-width: 63ch; margin: 1.25rem 0 0; color: #d9deea; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+.topic-jump { max-width: 72ch; margin: 1rem 0 0; color: #d9deea; font-size: .98rem; }
+.topic-jump a { color: #fff; font-weight: 750; text-underline-offset: .2em; }
 
 .workspace { display: grid; grid-template-columns: 1.25fr .75fr; gap: 1.4rem; align-items: start; margin-top: -3.7rem; padding-bottom: 4.5rem; }
 .card { border: 1px solid var(--line); border-radius: 1.15rem; background: #fff; box-shadow: 0 22px 58px rgba(16,23,39,.14); }
