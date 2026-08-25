@@ -27,6 +27,12 @@ assert.match(html, /utm_content=event_ticketing_explore/);
 assert.match(html, /docs\.stripe\.com\/payments\/checkout/);
 assert.match(html, /WCAG22\/Understanding\/target-size-minimum\.html/);
 assert.match(html, /attendee data ownership/);
+assert.match(html, /Visual evidence path/);
+assert.match(html, /utm_content=visual_provenance_path/);
+assert.match(html, /utm_content=visual_provenance_explore/);
+assert.match(html, /spec\.c2pa\.org\/specifications/);
+assert.match(html, /w3\.org\/WAI\/tutorials\/images/);
+assert.match(html, /Separate observation/);
 assert.doesNotMatch(html, /Clarity/i);
 
 const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
