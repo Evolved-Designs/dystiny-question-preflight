@@ -33,6 +33,12 @@ assert.match(html, /utm_content=visual_provenance_explore/);
 assert.match(html, /spec\.c2pa\.org\/specifications/);
 assert.match(html, /w3\.org\/WAI\/tutorials\/images/);
 assert.match(html, /Separate observation/);
+assert.match(html, /Matching-system evidence path/);
+assert.match(html, /utm_content=matching_system_evidence/);
+assert.match(html, /utm_content=matching_system_explore/);
+assert.match(html, /nist\.gov\/itl\/ai-risk-management-framework/);
+assert.match(html, /accessible-authentication-minimum\.html/);
+assert.match(html, /Plan challenge and recovery/);
 assert.doesNotMatch(html, /Clarity/i);
 
 const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);

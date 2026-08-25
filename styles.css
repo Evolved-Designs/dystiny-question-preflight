@@ -115,6 +115,18 @@ textarea { width: 100%; min-height: 11rem; margin-top: .5rem; padding: 1rem; res
 .media-steps span { color: var(--muted); }
 .media-sources { grid-column: 1 / -1; margin: 0; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .92rem; }
 .media-sources a { color: var(--violet-dark); font-weight: 750; text-underline-offset: .18em; }
+.matching-path { display: grid; grid-template-columns: 1fr .9fr; gap: 2rem; margin-bottom: 4rem; padding: clamp(1.5rem, 4vw, 2.4rem); border: 1px solid var(--line); border-radius: 1.15rem; background: linear-gradient(145deg, #fff 0%, #eef7f4 100%); box-shadow: 0 16px 38px rgba(16,23,39,.09); }
+.matching-path .eyebrow { color: var(--violet-dark); }
+.matching-path h2 { max-width: 18ch; color: var(--night); }
+.matching-path p { color: var(--muted); }
+.matching-actions { display: flex; flex-wrap: wrap; gap: .8rem 1rem; align-items: center; margin-top: 1.2rem; }
+.matching-actions > a:not(.button) { color: var(--violet-dark); font-weight: 750; text-underline-offset: .18em; }
+.matching-steps { display: grid; gap: .8rem; margin: 0; padding: 0; list-style: none; counter-reset: matching-step; }
+.matching-steps li { position: relative; display: grid; gap: .25rem; padding: 1rem 1rem 1rem 3.5rem; border: 1px solid var(--line); border-radius: .8rem; background: #fff; counter-increment: matching-step; }
+.matching-steps li::before { content: counter(matching-step); position: absolute; margin-left: -2.35rem; display: grid; width: 1.6rem; height: 1.6rem; place-items: center; border-radius: 50%; background: var(--violet-dark); color: #fff; font-weight: 800; }
+.matching-steps span { color: var(--muted); }
+.matching-sources { grid-column: 1 / -1; margin: 0; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .92rem; }
+.matching-sources a { color: var(--violet-dark); font-weight: 750; text-underline-offset: .18em; }
 .why { padding-bottom: 5rem; }
 footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
 
@@ -122,7 +134,7 @@ footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--m
   .workspace { grid-template-columns: 1fr; }
   .example-grid { grid-template-columns: 1fr; }
   .evidence-choice { grid-template-columns: 1fr; }
-  .creative-path, .event-path, .media-path { grid-template-columns: 1fr; }
+  .creative-path, .event-path, .media-path, .matching-path { grid-template-columns: 1fr; }
   .nav { align-items: flex-start; flex-direction: column; }
 }
 
