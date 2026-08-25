@@ -28,14 +28,15 @@ export function analyzeQuestion(rawQuestion) {
   return { question, words, checks, ready, total: checks.length };
 }
 
-export function buildDystinyUrl(question, ready = analyzeQuestion(question).ready) {
+export function buildDystinyUrl(question, ready = analyzeQuestion(question).ready, evidence = 'balanced') {
   const url = new URL('https://dystiny.com/answer/');
   url.searchParams.set('q', String(question).trim());
   url.searchParams.set('utm_source', 'github_pages');
   url.searchParams.set('utm_medium', 'owned_tool');
   url.searchParams.set('utm_campaign', 'question_preflight');
   const safeReady = Math.max(0, Math.min(4, Number(ready) || 0));
-  url.searchParams.set('utm_content', `signals_${safeReady}_of_4`);
+  const safeEvidence = ['balanced', 'official', 'primary', 'health'].includes(evidence) ? evidence : 'balanced';
+  url.searchParams.set('utm_content', `signals_${safeReady}_of_4_evidence_${safeEvidence}`);
   return url.toString();
 }
 
@@ -56,6 +57,8 @@ function init() {
   const launch = document.querySelector('[data-launch]');
   const sample = document.querySelector('[data-sample]');
   const clear = document.querySelector('[data-clear]');
+  const evidenceChoices = [...document.querySelectorAll('input[name="evidence"]')];
+  const evidence = () => evidenceChoices.find((choice) => choice.checked)?.value ?? 'balanced';
 
   function render() {
     const result = analyzeQuestion(field.value);
@@ -77,10 +80,11 @@ function init() {
     launch.classList.toggle('disabled', !canLaunch);
     launch.tabIndex = canLaunch ? 0 : -1;
     launch.textContent = canLaunch ? launchCopy(result.ready) : 'Write a question to continue';
-    launch.href = canLaunch ? buildDystinyUrl(result.question, result.ready) : '#question';
+    launch.href = canLaunch ? buildDystinyUrl(result.question, result.ready, evidence()) : '#question';
   }
 
   field.addEventListener('input', render);
+  evidenceChoices.forEach((choice) => choice.addEventListener('change', render));
   sample.addEventListener('click', () => {
     field.value = 'How can cities reduce dangerous summer heat while protecting residents who face the greatest risk?';
     render();
