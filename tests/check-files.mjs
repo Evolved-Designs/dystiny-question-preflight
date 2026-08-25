@@ -21,6 +21,12 @@ assert.match(html, /Creative research path/);
 assert.match(html, /utm_content=creative_research_path/);
 assert.match(html, /si\.edu\/OpenAccess/);
 assert.match(html, /separate observation from interpretation/i);
+assert.match(html, /Event technology path/);
+assert.match(html, /utm_content=event_ticketing_decision/);
+assert.match(html, /utm_content=event_ticketing_explore/);
+assert.match(html, /docs\.stripe\.com\/payments\/checkout/);
+assert.match(html, /WCAG22\/Understanding\/target-size-minimum\.html/);
+assert.match(html, /attendee data ownership/);
 assert.doesNotMatch(html, /Clarity/i);
 
 const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
