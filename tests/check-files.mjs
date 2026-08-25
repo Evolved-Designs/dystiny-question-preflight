@@ -17,6 +17,10 @@ assert.match(html, /tabindex="-1"/);
 assert.match(html, /Write a question to continue/);
 assert.equal((html.match(/class="example-link"/g) ?? []).length, 4);
 assert.match(html, /utm_content=example_city_heat/);
+assert.match(html, /Creative research path/);
+assert.match(html, /utm_content=creative_research_path/);
+assert.match(html, /si\.edu\/OpenAccess/);
+assert.match(html, /separate observation from interpretation/i);
 assert.doesNotMatch(html, /Clarity/i);
 
 const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
