@@ -7,6 +7,8 @@ assert.match(html, /<title>AI Research Question Preflight \| Dystiny<\/title>/);
 assert.match(html, /utm_content=hero_explore_topics/);
 assert.match(html, /utm_content=hero_explore_technology/);
 assert.match(html, /utm_content=hero_explore_science/);
+assert.match(html, /utm_content=hero_source_guide/);
+assert.match(html, /dystiny\.com\/source-guide\//);
 assert.match(html, /utm_content=footer_explore_topics/);
 assert.match(html, /"about": \[/);
 assert.match(html, /<h1>Shape a broad idea into a stronger research question\.<\/h1>/);
