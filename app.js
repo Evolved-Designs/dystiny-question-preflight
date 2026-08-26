@@ -67,6 +67,20 @@ export function launchCopy(ready = 0) {
   return 'Open this starting question in Dystiny';
 }
 
+export function preparedQuestionText(question, evidence = 'balanced') {
+  return `Dystiny prepared research question\n\nEvidence preference: ${evidence}\nQuestion: ${questionForEvidence(question, evidence)}\n\nThis local handoff is a starting point, not professional advice or a guarantee of source coverage.`;
+}
+
+export function downloadTextFile(filename, text) {
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
 function init() {
   const field = document.querySelector('#question');
   if (!field) return;
@@ -77,6 +91,7 @@ function init() {
   const launch = document.querySelector('[data-launch]');
   const sample = document.querySelector('[data-sample]');
   const clear = document.querySelector('[data-clear]');
+  const download = document.querySelector('[data-download]');
   const evidenceChoices = [...document.querySelectorAll('input[name="evidence"]')];
   const evidence = () => evidenceChoices.find((choice) => choice.checked)?.value ?? 'balanced';
   const evidenceDetail = document.querySelector('[data-evidence-note]');
@@ -98,6 +113,7 @@ function init() {
     });
 
     const canLaunch = result.question.length >= 12;
+    download.disabled = !canLaunch;
     launch.toggleAttribute('aria-disabled', !canLaunch);
     launch.classList.toggle('disabled', !canLaunch);
     launch.tabIndex = canLaunch ? 0 : -1;
@@ -116,6 +132,13 @@ function init() {
     field.value = '';
     render();
     field.focus();
+  });
+  download.addEventListener('click', () => {
+    const result = analyzeQuestion(field.value);
+    if (result.question.length < 12) return;
+    downloadTextFile('dystiny-prepared-question.txt', preparedQuestionText(result.question, evidence()));
+    download.textContent = 'Question downloaded';
+    window.setTimeout(() => { download.textContent = 'Download prepared question'; }, 1800);
   });
   launch.addEventListener('click', (event) => {
     if (launch.getAttribute('aria-disabled') === 'true') event.preventDefault();
