@@ -76,6 +76,14 @@ textarea { width: 100%; min-height: 11rem; margin-top: .5rem; padding: 1rem; res
 .examples .eyebrow { color: var(--violet-dark); }
 .examples h2, .why h2 { color: var(--night); }
 .examples > p, .why p { max-width: 72ch; }
+.start-path { display: grid; grid-template-columns: .72fr 1.28fr; gap: 2rem; margin-bottom: 4rem; padding: clamp(1.5rem, 4vw, 2.4rem); border: 1px solid var(--line); border-radius: 1.15rem; background: #fff; box-shadow: 0 16px 38px rgba(16,23,39,.09); }
+.start-path h2 { max-width: 18ch; color: var(--night); }
+.start-path p { color: var(--muted); }
+.start-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.start-grid a { display: grid; gap: .35rem; min-height: 7.5rem; padding: 1rem; border: 1px solid var(--line); border-radius: .85rem; color: var(--night); text-decoration: none; background: linear-gradient(145deg, #fff 0%, #f2f0fb 100%); }
+.start-grid a:hover, .start-grid a:focus-visible { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(103,76,187,.12); }
+.start-grid strong { color: var(--violet-dark); }
+.start-grid span { color: var(--muted); }
 .example-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.4rem; }
 .example-link { display: grid; gap: .45rem; min-height: 10rem; padding: 1.2rem; border: 1px solid var(--line); border-radius: .9rem; background: #fff; color: var(--ink); text-decoration: none; box-shadow: 0 12px 30px rgba(16,23,39,.08); }
 .example-link strong { color: var(--violet-dark); }
@@ -148,7 +156,8 @@ footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--m
   .workspace { grid-template-columns: 1fr; }
   .example-grid { grid-template-columns: 1fr; }
   .evidence-choice { grid-template-columns: 1fr; }
-  .creative-path, .event-path, .media-path, .matching-path, .continuity-path { grid-template-columns: 1fr; }
+  .start-path, .creative-path, .event-path, .media-path, .matching-path, .continuity-path { grid-template-columns: 1fr; }
+  .start-grid { grid-template-columns: 1fr; }
   .nav { align-items: flex-start; flex-direction: column; }
 }
 
