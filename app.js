@@ -32,7 +32,7 @@ export function buildDystinyUrl(question, ready = analyzeQuestion(question).read
   const url = new URL('https://dystiny.com/answer/');
   const safeEvidence = ['balanced', 'official', 'primary', 'health'].includes(evidence) ? evidence : 'balanced';
   url.searchParams.set('q', questionForEvidence(question, safeEvidence));
-  url.searchParams.set('utm_source', 'github_pages');
+  url.searchParams.set('utm_source', 'github');
   url.searchParams.set('utm_medium', 'owned_tool');
   url.searchParams.set('utm_campaign', 'question_preflight');
   const safeReady = Math.max(0, Math.min(4, Number(ready) || 0));

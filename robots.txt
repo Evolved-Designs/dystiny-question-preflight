@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://evolved-designs.github.io/dystiny-question-preflight/sitemap.xml
+Sitemap: https://dystiny.com/question-guide/sitemap.xml
